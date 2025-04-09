@@ -10,5 +10,9 @@ import { NgFor } from '@angular/common';
 })
 export class HeroesComponent {
   heroes = HEROES;
+  selectedHero?: Hero;
+  onSelect(hero: Hero) {
+    this.selectedHero = hero;
+  }
   // hero: Hero = { id: 1, name: 'Windstorm' };
 }
