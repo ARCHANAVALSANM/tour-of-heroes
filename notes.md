@@ -17,3 +17,31 @@ RxJS is a library for reactive programming using Observables, to make it easier 
 Observable is one of the key classes in the RxJS library
 
 of(HEROES) returns an Observable<Hero[]> that emits a single value, the array of mock heroes.
+
+In Angular, the best practice is to load and configure the router in a separate, top-level module. The router is dedicated to routing and imported by the root AppModule.
+By convention, the module class name is AppRoutingModule and it belongs in the app-routing.module.ts in the src/app directory.
+
+ng generate module app-routing --flat --module=app
+--flat Puts the file in src/app instead of its own directory.
+--module=app Tells ng generate to register it in the imports array of the AppModule.
+
+Routes tell the Router which view to display when a user clicks a link or pastes a URL into the browser address bar.
+path -- A string that matches the URL in the browser address bar.
+component -- The component that the router should create when navigating to this route.
+
+The @NgModule metadata initializes the router and starts it listening for browser location changes.
+The following line adds the RouterModule to the AppRoutingModule imports array and configures it with the routes in one step by calling RouterModule.forRoot():
+imports: [ RouterModule.forRoot(routes) ],
+AppRoutingModule exports RouterModule to be available throughout the application.
+
+The <router-outlet> tells the router where to display routed views.
+
+The colon : character in the path indicates that :id is a placeholder for a specific hero id.
+
+The location is an Angular service for interacting with the browser. This service lets you navigate back to the previous view.
+
+The route.snapshot is a static image of the route information shortly after the component was created.
+The paramMap is a dictionary of route parameter values extracted from the URL. The "id" key returns the id of the hero to fetch.
+Route parameters are always strings. The JavaScript Number function converts the string to a number, which is what a hero id should be.
+
+The backtick ( ` ) characters define a JavaScript template literal for embedding the id.
