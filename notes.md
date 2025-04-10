@@ -45,3 +45,19 @@ The paramMap is a dictionary of route parameter values extracted from the URL. T
 Route parameters are always strings. The JavaScript Number function converts the string to a number, which is what a hero id should be.
 
 The backtick ( ` ) characters define a JavaScript template literal for embedding the id.
+
+HttpClient is Angular's mechanism for communicating with a remote server over HTTP.
+HTTP — it's the "language" between client and server.
+HTTP is universal and standard
+Works with REST APIs and most backends
+
+Install the In-memory Web API package from npm with the following command:
+npm install angular-in-memory-web-api --save
+
+The forRoot() configuration method takes an InMemoryDataService class that primes the in-memory database.
+
+of() for http.get() and the application keeps working without any other changes because both functions return an Observable<Hero[]>.
+
+HTTP is a request/response protocol. You make a request, it returns a single response.
+In general, an observable can return more than one value over time. An observable from HttpClient always emits a single value and then completes, never to emit again.
+HttpClient.get() returns the body of the response as an untyped JSON object by default.
