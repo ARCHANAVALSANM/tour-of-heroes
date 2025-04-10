@@ -61,3 +61,9 @@ of() for http.get() and the application keeps working without any other changes 
 HTTP is a request/response protocol. You make a request, it returns a single response.
 In general, an observable can return more than one value over time. An observable from HttpClient always emits a single value and then completes, never to emit again.
 HttpClient.get() returns the body of the response as an untyped JSON object by default.
+
+The $ is a convention that indicates heroes$ is an Observable, not an array.
+Since \*ngFor can't do anything with an Observable, use the pipe | character followed by async. This identifies Angular's AsyncPipe and subscribes to an Observable automatically so you won't have to do so in the component class.
+
+A Subject is both a source of observable values and an Observable itself. You can subscribe to a Subject as you would any Observable.
+You can also push values into that Observable by calling its next(value)
