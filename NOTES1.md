@@ -52,3 +52,12 @@ This sets the HTTP headers to tell the backend:
 This is important for PUT and POST requests so the server can parse the incoming data correctly.
 
 search-This works because the Angular in-memory-web-api allows filtering via /?name=term.
+
+The previous version assigns an array of heroes to the component's heroes property.
+The assignment occurs synchronously, as if the server could return heroes instantly
+or the browser could freeze the UI while it waited for the server's response.
+That won't work when the HeroService is actually making requests of a remote server.
+The new version waits for the Observable to emit the array of heroes, which could
+happen now or several minutes from now. The subscribe() method passes the emitted
+array to the callback, which sets the component's heroes property.
+This asynchronous approach works when the HeroService requests heroes from the server.

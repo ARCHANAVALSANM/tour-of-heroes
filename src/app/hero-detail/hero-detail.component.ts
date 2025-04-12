@@ -10,16 +10,17 @@ import { Location } from '@angular/common';
   styleUrl: './hero-detail.component.css',
 })
 export class HeroDetailComponent {
-  @Input() hero?: Hero;
+  // @Input() hero?: Hero;
+  hero?: Hero;
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
     private location: Location
   ) {}
   ngOnInit() {
-    this.getHeroes();
+    this.getHero();
   }
-  getHeroes() {
+  getHero() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.heroService.getHero(id).subscribe((hero) => (this.hero = hero));
   }
@@ -27,8 +28,9 @@ export class HeroDetailComponent {
     this.location.back();
   }
   save(): void {
-    if (this.hero) {
+    if (this.hero?.name?.trim()) {
       this.heroService.updateHero(this.hero).subscribe(() => this.goBack());
+      // this.router.navigate(['/detail', updatedHero.id]);
     }
   }
 }

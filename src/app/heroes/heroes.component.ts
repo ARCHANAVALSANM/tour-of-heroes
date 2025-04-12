@@ -31,6 +31,7 @@ export class HeroesComponent {
     if (!name) {
       return;
     }
+    // "Treat this object as a Hero", even though it only has a name for now.
     this.heroService.addHero({ name } as Hero).subscribe((hero) => {
       this.heroes.push(hero);
     });
